@@ -98,7 +98,7 @@ _Update this as use cases are completed_
 | Stage | Use Case | Status | Notes |
 |-------|----------|--------|-------|
 | 1 | 1.1 Scheduled runner | ✅ Complete | Typhoon Jangmi monitor — JMA + Open-Meteo APIs, map gen, 10-min cron, danger alerts. Node.js in container. |
-| 1 | 1.2 Google One cleanup — Phase A (audit) | 🔧 In progress | Step 0 done. Photos API blocked (Mar 2025 restriction). Pivot: Gmail + Drive audit instead. See docs/plans/1.2-phase-a-google-one-audit.md v2. Storage confirmed at 205GB/200GB (over quota). |
+| 1 | 1.2 Google One cleanup — Phase A (audit) | ✅ Complete | Gmail + Drive audit (Photos API blocked Mar 2025). Nano-orchestrated audit.py via OneCLI proxy. Storage: 214.8GB/214.7GB (100%). Gmail top offenders = newsletters ~8-9MB each. Drive = 596MB videos. Photos+Gmail = 214.2GB. |
 | 1 | 1.2 Google One cleanup — Phase B+C (approve+execute) | 🔲 Not started | |
 | 1 | 1.3 Watchdog | 🔲 Not started | |
 | 1 | 1.4 File pipeline | 🔲 Not started | |
