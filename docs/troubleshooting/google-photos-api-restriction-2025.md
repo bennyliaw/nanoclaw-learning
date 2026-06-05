@@ -24,18 +24,33 @@ even with these scopes, unverified apps get 403 back from all list/search endpoi
 }
 ```
 
-This message is misleading — the scopes ARE present in the token. Google returns this
-error to direct developers to apply for higher-level app verification.
+This message is misleading — the scopes ARE correctly requested. Google returns this
+specific error to signal that the *operation* requires a permission level only granted to
+verified apps, even when the scope is present in the token.
 
-## How we confirmed this (not proxy/auth issue)
+## How we confirmed this — definitive proof
 
-Working setup (OneCLI connected, token has `photoslibrary` scope):
-- Drive API (`www.googleapis.com/drive/...`) → ✅ returns real data
-- Photos albums endpoint (`photoslibrary.googleapis.com/v1/albums`) → ❌ 403
-- Photos mediaItems endpoint → ❌ 403
+**Test:** OAuth 2.0 Playground with own client credentials (completely bypassing OneCLI
+entirely). Fresh token obtained via Playground OAuth flow with `photoslibrary.readonly`
+scope explicitly authorized. App in Testing mode, account owner as test user.
 
-The OneCLI gateway IS injecting the Photos token (we get a Google error, not an OneCLI
-"app not connected" error). The token has the correct scope. The rejection is Google's.
+**Result:** Identical 403 `PERMISSION_DENIED / "insufficient authentication scopes"` on
+`GET https://photoslibrary.googleapis.com/v1/mediaItems?pageSize=5`.
+
+**What this rules out:**
+
+| Hypothesis | Ruled out because |
+|------------|-------------------|
+| OneCLI injecting wrong/missing token | Playground used its own fresh token, no OneCLI involved |
+| Token missing photoslibrary scope | Scope explicitly authorized in Playground OAuth flow |
+| API not enabled in GCP | Console shows Photos Library API enabled; 7 requests logged, all 403 |
+| Storage over-quota blocking reads | Over-quota only blocks writes; returns `storageQuotaExceeded`, not scope error |
+| API rate limit | Fresh project, only 7 calls; rate limits return 429, not 403 |
+| Testing mode exemption | App owner as test user still blocked — Testing mode does not exempt this scope |
+
+**Conclusion:** Google blocks `mediaItems.list`, `mediaItems.search`, and `albums.list`
+for unverified apps at the API level, regardless of OAuth scope or Testing mode status.
+Restriction introduced March 2025.
 
 ## Alternatives for auditing Google Photos storage
 
