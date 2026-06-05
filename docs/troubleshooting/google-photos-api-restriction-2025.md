@@ -72,6 +72,11 @@ Restriction introduced March 2025.
 4. **Phase B/C** — when Google eventually allows Takeout-based or Picker-based automation,
    wire that into NanoClaw for approval-gated deletion
 
+## Official references
+
+- [Updates to the Google Photos APIs](https://developers.google.com/photos/support/updates) — Google's official announcement of the March 31, 2025 scope deprecation
+- [rclone issue #8567](https://github.com/rclone/rclone/issues/8567) — widely-used open-source tool hitting the exact same 403; confirms this affects all third-party apps
+
 ## App verification (not practical for personal use)
 
 To regain full `mediaItems.list` access, an app must complete Google's OAuth verification
