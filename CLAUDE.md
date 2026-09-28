@@ -9,19 +9,21 @@ unprompted.
 
 - **`~/dev/nanoclaw-learning/`** (this repo, `github.com/bennyliaw/nanoclaw-learning`,
   private) — learning notes only.
-- **`~/dev/nanoclaw-v2/`** — the NanoClaw software itself (v2 = NanoClaw's major version),
-  a clone customised in place. Its `origin` is upstream `nanocoai/nanoclaw` (read-only),
-  so its local commits exist **only on this Mac**.
+- **`github.com/bennyliaw/nanoclaw`** (public fork of `nanocoai/nanoclaw`, 28 Sep 2026) —
+  the NanoClaw software. `main` tracks upstream; Ben's customisations (Telegram channel +
+  photo patch, single-instance guard, `claude-usage` skill, Ollama benchmark notes) are on
+  branch **`ben/local-2.0.72`**, based on 2.0.72. The old local clone `~/dev/nanoclaw-v2`
+  was its working copy.
 
 ## On resuming — do these first
 
-1. **Fork before anything else.** Create `bennyliaw/nanoclaw` (private); point `origin`
-   at the fork, add `nanocoai/nanoclaw` as `upstream` (the layout the `update-nanoclaw`
-   skill expects), push the two local commits.
-2. **Catch up with upstream.** At pause the install was 2.0.72; upstream was 2.4.0,
-   1,175 commits ahead (27 Sep). Use `/update-nanoclaw`.
-3. **Upstream PR candidates**, both written by Ben (details in `nanoclaw-v2/patches/PATCH-NOTES.md`
-   and commit `d73ec3f`):
+1. **Clone the fork**: `git clone https://github.com/bennyliaw/nanoclaw` and add
+   `upstream` = `nanocoai/nanoclaw` (the layout the `update-nanoclaw` skill expects).
+2. **Bring `ben/local-2.0.72` forward.** It is based on 2.0.72; upstream was 2.4.0,
+   1,175 commits ahead (27 Sep). Start from fork `main`, then `/update-nanoclaw` or
+   cherry-pick the branch commits.
+3. **Upstream PR candidates**, both written by Ben (details in `patches/PATCH-NOTES.md`
+   and commit `d73ec3f` on the branch):
    - Telegram inline-photo patch (`sendPhoto` for images instead of `sendDocument`).
    - Single-instance PID guard — a second host process was killing the first's containers.
 4. **`groups/main/CLAUDE.local.md` is upstream's old v1 text**, renamed by v2's
