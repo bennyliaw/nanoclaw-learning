@@ -12,13 +12,21 @@ unprompted.
 - **`github.com/bennyliaw/nanoclaw`** (public fork of `nanocoai/nanoclaw`, 28 Sep 2026) —
   the NanoClaw software. `main` tracks upstream; Ben's customisations (Telegram channel +
   photo patch, single-instance guard, `claude-usage` skill, Ollama benchmark notes) are on
-  branch **`ben/local-2.0.72`**, based on 2.0.72. The old local clone `~/dev/nanoclaw-v2`
-  was its working copy.
+  branch **`ben/local-2.0.72`**, based on 2.0.72.
+- **`~/dev/nanoclaw/`** — the local working copy of that fork (renamed from
+  `~/dev/nanoclaw-v2` on 28 Sep 2026; `origin` = the fork, `upstream` = nanocoai). It
+  carries over the git-ignored state of the last install, which exists **only here**:
+  `.env` (API keys, Telegram bot token), `groups/` (agent prompts, conversations, the
+  Google One audit output), `data/` (NanoClaw DB, Telegram pairings), `logs/`.
+- **The launchd service is disabled.** It was still running on 28 Sep, crash-looping
+  every 15 min because Docker wasn't running. Its plist is parked at
+  `~/dev/nanoclaw/data/launchd-disabled/com.nanoclaw-v2-63b11145.plist` and still points
+  at the old `nanoclaw-v2` path; fix the paths before loading it again.
 
 ## On resuming — do these first
 
-1. **Clone the fork**: `git clone https://github.com/bennyliaw/nanoclaw` and add
-   `upstream` = `nanocoai/nanoclaw` (the layout the `update-nanoclaw` skill expects).
+1. **Work in `~/dev/nanoclaw`** (already wired: `origin` = fork, `upstream` = nanocoai —
+   the layout the `update-nanoclaw` skill expects). Start Docker first.
 2. **Bring `ben/local-2.0.72` forward.** It is based on 2.0.72; upstream was 2.4.0,
    1,175 commits ahead (27 Sep). Start from fork `main`, then `/update-nanoclaw` or
    cherry-pick the branch commits.
