@@ -5,6 +5,29 @@
 or freelance engagement actually needs it. Don't resume the use cases below
 unprompted.
 
+## Two folders — don't confuse them
+
+- **`~/dev/nanoclaw-learning/`** (this repo, `github.com/bennyliaw/nanoclaw-learning`,
+  private) — learning notes only.
+- **`~/dev/nanoclaw-v2/`** — the NanoClaw software itself (v2 = NanoClaw's major version),
+  a clone customised in place. Its `origin` is upstream `nanocoai/nanoclaw` (read-only),
+  so its local commits exist **only on this Mac**.
+
+## On resuming — do these first
+
+1. **Fork before anything else.** Create `bennyliaw/nanoclaw` (private); point `origin`
+   at the fork, add `nanocoai/nanoclaw` as `upstream` (the layout the `update-nanoclaw`
+   skill expects), push the two local commits.
+2. **Catch up with upstream.** At pause the install was 2.0.72; upstream was 2.4.0,
+   1,175 commits ahead (27 Sep). Use `/update-nanoclaw`.
+3. **Upstream PR candidates**, both written by Ben (details in `nanoclaw-v2/patches/PATCH-NOTES.md`
+   and commit `d73ec3f`):
+   - Telegram inline-photo patch (`sendPhoto` for images instead of `sendDocument`).
+   - Single-instance PID guard — a second host process was killing the first's containers.
+4. **`groups/main/CLAUDE.local.md` is upstream's old v1 text**, renamed by v2's
+   one-time migration (`src/claude-md-compose.ts`); it names tools v2 doesn't have.
+   Rewrite or delete it before using the `main` group.
+
 ## Who I Am
 - Experienced Python developer (strong fundamentals, comfortable with terminals, Docker, GitHub)
 - New to AI and agentic patterns when this project started (June 2026) — learned them here by doing; now paused to focus on other tools
