@@ -7,7 +7,7 @@ unprompted.
 
 ## Who I Am
 - Experienced Python developer (strong fundamentals, comfortable with terminals, Docker, GitHub)
-- New to AI and Agentic patterns — learning by doing
+- New to AI and agentic patterns when this project started (June 2026) — learned them here by doing; now paused to focus on other tools
 - Goal: progress through 3 stages of NanoClaw use cases (personal automation → agentic concepts → client/product)
 
 ## Project Goal
@@ -21,7 +21,7 @@ NanoClaw repo: https://nanoclaw.dev
 
 ### Always
 - Assume strong Python knowledge — no need to explain basic syntax or patterns
-- Explain AI/Agentic concepts clearly — I'm new here, don't assume familiarity
+- Explain AI/agentic concepts clearly where they're specific to NanoClaw — the basics are familiar by now
 - Prefer working code over theory; I learn by building
 - Flag security implications explicitly — this is central to why I chose NanoClaw over alternatives
 
