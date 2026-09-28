@@ -1,5 +1,10 @@
 # CLAUDE.md — NanoClaw Learning Project
 
+**Status: PAUSED (28 Sep 2026).** NanoClaw is one agent framework among several
+(a more secure OpenClaw alternative), not a must-have, so it's parked until a project
+or freelance engagement actually needs it. Don't resume the use cases below
+unprompted.
+
 ## Who I Am
 - Experienced Python developer (strong fundamentals, comfortable with terminals, Docker, GitHub)
 - New to AI and Agentic patterns — learning by doing
@@ -30,12 +35,12 @@ NanoClaw repo: https://nanoclaw.dev
 ## Current Stage
 **Stage 1 — Personal/Dev Task Automation**
 
-### Stage 1 Use Cases (in order)
-- [ ] 1.1 Scheduled code runner (repo pull → Python script → messaging notification)
-- [ ] 1.2 Google One storage cleanup (audit → candidate review → delete/compress) ← ANCHOR
-- [ ] 1.3 Dev environment watchdog (log/API monitor → anomaly alert)
-- [ ] 1.4 File processing pipeline (drop file → transform → report)
-- [ ] 1.5 Gmail/Drive storage cleanup (reuses 1.2 approval pattern)
+### Stage 1 Use Cases (in order — status lives in the Progress Log below)
+- 1.1 Scheduled code runner (repo pull → Python script → messaging notification)
+- 1.2 Google One storage cleanup (audit → candidate review → delete/compress) ← ANCHOR
+- 1.3 Dev environment watchdog (log/API monitor → anomaly alert)
+- 1.4 File processing pipeline (drop file → transform → report)
+- 1.5 Gmail/Drive storage cleanup (reuses 1.2 approval pattern)
 
 ### Google One Cleanup Target
 - Current: >90% of 200GB (~180GB+)
@@ -45,14 +50,14 @@ NanoClaw repo: https://nanoclaw.dev
 - Key libs: Pillow, imagehash, ffmpeg, Google Photos/Gmail/Drive APIs
 
 ### Stage 2 (next)
-- [ ] 2.1 Multi-turn memory agent
-- [ ] 2.2 Tool-use patterns
-- [ ] 2.3 Human-in-the-loop approval flow
+- 2.1 Multi-turn memory agent
+- 2.2 Tool-use patterns
+- 2.3 Human-in-the-loop approval flow
 
 ### Stage 3 (later)
-- [ ] 3.1 Per-customer isolated agent instance
-- [ ] 3.2 Scheduled reporting agent
-- [ ] 3.3 Approval-gated workflow automation
+- 3.1 Per-customer isolated agent instance
+- 3.2 Scheduled reporting agent
+- 3.3 Approval-gated workflow automation
 
 ---
 
@@ -74,20 +79,11 @@ NanoClaw repo: https://nanoclaw.dev
 
 ## Model & Billing Strategy
 
-**Phase 1 (now–June 14, 2026): Claude Pro.**
-- Agent SDK usage currently shares my Pro pool (5h/7d limits), which I've barely used.
-- Front-loading learning now while it's effectively covered by my subscription.
-- Must NOT have ANTHROPIC_API_KEY set (would force pay-as-you-go billing instead of subscription).
-
-**June 15, 2026 cutover:**
-- Agent SDK splits to a separate $20/mo Pro credit (API rates, no rollover).
-- Claim credit via email (~June 8).
-- Watch for retired model IDs (claude-sonnet-4-20250514, claude-opus-4-20250514) + renamed SDK packages.
-
-**Phase 2 (post June 15): switch brain to DeepSeek (cloud).**
-- Powering NanoClaw + other experiments with DeepSeek to avoid the $20 ceiling.
+Agent SDK usage has a separate $20/mo Pro credit (API rates, no rollover) since 15 Jun
+2026. The plan on resuming was to run the brain on DeepSeek (cloud) to stay off that
+ceiling. Whether that switch was made before the project paused is unconfirmed —
+check the provider before assuming one.
 - Path: `/add-opencode` → AGENT_PROVIDER=opencode → DeepSeek (direct API or via OpenRouter).
-- When helping me post-cutover, assume DeepSeek is the default model unless I say otherwise.
 - DeepSeek note: strong cheap reasoning, but watch tool-call/reasoning_content quirks on multi-step loops (esp. via OpenRouter).
 
 ---
